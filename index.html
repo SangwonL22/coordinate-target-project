@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Target coordinates</title>
+    <style>
+      body {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        background-color: black;
+        cursor: cell;
+        overflow: hidden;
+      }
+
+      .pistol {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .target {
+        height: 50%;
+        width: 150px;
+        height: 150px;
+      }
+
+      .line {
+        position: absolute;
+        background-color: white;
+      }
+
+      .horizontal {
+        width: 100%;
+        height: 1px;
+        transform: translateY(-65px);
+      }
+
+      .vertical {
+        width: 1px;
+        height: 100%;
+      }
+
+      .tag {
+        position: absolute;
+        height: 50%;
+        transform: translate(-50%, 20%);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="pistol" src="img/pistol.png" alt="pistol" />
+    <img class="target" src="img/target.png.png" alt="target" />
+    <span class="line horizontal"></span>
+    <span class="line vertical"></span>
+    <h2 class="tag"></h2>
+
+    <script>
+      const pistol = document.querySelector('.pistol');
+      const target = document.querySelector('.target');
+      const horizontal = document.querySelector('.horizontal');
+      const vertical = document.querySelector('.vertical');
+      const tag = document.querySelector('.tag');
+
+      document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        horizontal.style.top = `${y}px`;
+        vertical.style.left = `${x}px`;
+        pistol.style.left = `${x}px`;
+        pistol.style.top = `${y}px`;
+        tag.style.left = `${x}px`;
+        tag.style.top = `${y}px`;
+        tag.innerHTML = `
+        ${x}, ${y}
+        `;
+      });
+
+      document.addEventListener('click', () => {
+        const audio = new Audio('sound/gun-sound.mp3');
+        audio.play();
+        setTimeout(() => {
+          alert('shoot!');
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
