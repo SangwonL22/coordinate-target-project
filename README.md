@@ -1,7 +1,7 @@
 # coordinate-target-project
 
 ##Github URL
-[ coordinate-target-project](https://sangwonl22.github.io/coordinate-target-project/)https://sangwonl22.github.io/coordinate-target-project/
+[ coordinate-target-project](https://sangwonl22.github.io/coordinate-target-project/)
 
 ##functioning
 
